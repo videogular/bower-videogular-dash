@@ -1,20 +1,20 @@
 /**
- * @license Videogular v0.7.2 http://videogular.com
+ * @license Videogular v1.0.0 http://videogular.com
  * Two Fucking Developers http://twofuckingdevelopers.com
  * License: MIT
  */
 /**
  * @ngdoc directive
- * @name com.2fdevs.videogular.plugins.dash:vgDash
- * @restrict E
+ * @name com.2fdevs.videogular.plugins.dash.directive:vgDash
+ * @restrict A
  * @description
- * Adds support for vg-video and vg-audio tags.
+ * Adds DASH support for vg-media.
  * This plugin requires dash.all.js file available at dash.js project:
  * https://github.com/Dash-Industry-Forum/dash.js
  *
  * ```html
  * <videogular vg-theme="config.theme.url" vg-autoplay="config.autoPlay">
- *    <vg-video vg-src="sources" vg-dash></vg-video>
+ *    <vg-media vg-src="sources" vg-dash></vg-media>
  * </videogular>
  * ```
  *
@@ -31,15 +31,15 @@ angular.module("com.2fdevs.videogular.plugins.dash", [])
         var context;
         var player;
 
-        function isDASH(url) {
+        scope.isDASH = function isDASH(url) {
           if (url.indexOf) {
             return (url.indexOf(".mpd") > 0);
           }
-        }
+        };
 
-        function onSourceChange(url) {
+        scope.onSourceChange = function onSourceChange(url) {
           // It's DASH, we use Dash.js
-          if (isDASH(url)) {
+          if (scope.isDASH(url)) {
             context = new Dash.di.DashContext();
             player = new MediaPlayer(context);
             player.setAutoPlay(API.autoPlay);
@@ -53,14 +53,14 @@ angular.module("com.2fdevs.videogular.plugins.dash", [])
               player = null;
             }
           }
-        }
+        };
 
         scope.$watch(
           function () {
             return API.sources;
           },
           function (newVal, oldVal) {
-            onSourceChange(newVal[0].src);
+            scope.onSourceChange(newVal[0].src);
           }
         );
       }
