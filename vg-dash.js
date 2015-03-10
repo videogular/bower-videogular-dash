@@ -1,5 +1,5 @@
 /**
- * @license Videogular v1.0.1 http://videogular.com
+ * @license videogular v1.1.0 http://videogular.com
  * Two Fucking Developers http://twofuckingdevelopers.com
  * License: MIT
  */
@@ -12,11 +12,11 @@
  * This plugin requires dash.all.js file available at dash.js project:
  * https://github.com/Dash-Industry-Forum/dash.js
  *
- * ```html
+ * <pre>
  * <videogular vg-theme="config.theme.url" vg-autoplay="config.autoPlay">
  *    <vg-media vg-src="sources" vg-dash></vg-media>
  * </videogular>
- * ```
+ * </pre>
  *
  */
 "use strict";
