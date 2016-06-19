@@ -1,4 +1,4 @@
 require('videogular');
 require('./vg-dash');
 
-module.exports = 'com.2fdevs.videogular';
+module.exports = 'com.2fdevs.videogular.plugins.dash';
