@@ -47,7 +47,7 @@ angular.module("com.2fdevs.videogular.plugins.dash", [])
                     };
 
                     scope.onSourceChange = function onSourceChange(source) {
-                        if (source.src) {
+                        if (source && source.src) {
                             var url = source.src;
 
                             // It's DASH, we use dash.js
