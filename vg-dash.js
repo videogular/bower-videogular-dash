@@ -55,6 +55,8 @@ angular.module("com.2fdevs.videogular.plugins.dash", [])
                                 // dash.js version 2.x
                                 player = dashjs.MediaPlayer().create();
                                 player.initialize(API.mediaElement[0], url, API.autoPlay);
+                                //To disable browser console logs for DASH plugin [GS]
+                                player.getDebug().setLogToBrowserConsole(false);
                             } else {
                                 // dash.js version < 2.x
                                 player = new MediaPlayer(new Dash.di.DashContext());
@@ -89,4 +91,3 @@ angular.module("com.2fdevs.videogular.plugins.dash", [])
         }
     }
     ]);
-
